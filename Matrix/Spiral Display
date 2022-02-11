@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int arr[][]=new int[n][m];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        int minrow=0;
+        int mincol=0;
+        int maxrow=arr.length-1;
+        int maxcol=arr[0].length-1;
+        int count=0;
+        int tne=n*m;
+        while(count<tne)
+        {
+            //Left wall
+            for(int i=minrow;i<=maxrow && count<tne;i++)
+            {
+                System.out.println(arr[i][mincol]);
+                count++;
+
+            }
+            mincol++;
+
+            // Bottom wall
+             for(int i=mincol;i<=maxcol && count<tne;i++)
+            {
+                System.out.println(arr[maxrow][i]);
+                count++;
+
+            }
+            maxrow--;
+
+
+            //Right wall
+            for(int i=maxrow;i>=minrow && count<tne;i--)
+            {
+                System.out.println(arr[i][maxcol]);
+                count++;
+            }
+            maxcol--;
+
+            //Upper wall
+            for(int i=maxcol;i>=mincol && count<tne;i--)
+            {
+                System.out.println(arr[minrow][i]);
+                count++;
+            }
+            minrow++;
+        }
+    }
+
+}
